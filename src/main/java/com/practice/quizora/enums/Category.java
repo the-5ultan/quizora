@@ -5,5 +5,5 @@ public enum Category {
     Python,
     Database,
     Docker,
-    Github
+    GitHub
 }

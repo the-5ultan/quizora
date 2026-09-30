@@ -1,17 +1,25 @@
 package com.practice.quizora.services;
 
 
+import com.practice.quizora.enums.Category;
 import com.practice.quizora.models.Question;
 import com.practice.quizora.repositories.QuestionRepository;
+import jakarta.persistence.Access;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class QuestionService {
-    QuestionRepository questionRepository;
+    @Autowired
+    private QuestionRepository questionRepository;
 
-    public List<Question> getAllQuestions(){
+    public List<Question> getAllQuestions() throws NullPointerException{
         return questionRepository.findAll();
+    }
+
+    public List<Question> getQuestionsByCategory(Category category) throws NullPointerException{
+        return questionRepository.findByCategory(category);
     }
 }
