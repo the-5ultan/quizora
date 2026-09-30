@@ -31,7 +31,7 @@
 	</properties>
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
+			<groupId>org.springframework.boot</groupId><!-- This dependency acutally does all the DB querries by which we directly get the data instaed of getting it converting it and all -->
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>

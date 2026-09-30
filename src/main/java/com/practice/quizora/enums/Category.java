@@ -1,6 +1,6 @@
 package com.practice.quizora.enums;
 
-public enum Catagory {
+public enum Category {
     Java,
     Python,
     Database,
