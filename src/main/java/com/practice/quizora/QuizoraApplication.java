@@ -8,6 +8,7 @@ public class QuizoraApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(QuizoraApplication.class, args);
+		System.out.println("QuizoraApplication started");
 	}
 
 }
