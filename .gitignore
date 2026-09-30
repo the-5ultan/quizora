@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Envoirment variables ###
+/src/main/resources/application.properties
