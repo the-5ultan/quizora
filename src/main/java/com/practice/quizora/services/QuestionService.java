@@ -32,4 +32,9 @@ public class QuestionService {
         questionRepository.deleteById(id);
         return "successfully deleted"+id;
     }
+
+    public String deleteQuestionByQuestionTitle(String questionTitle) {
+        questionRepository.deleteQuestionByQuestionTitle(questionTitle);
+        return  "successfully deleted "+questionTitle;
+    }
 }
