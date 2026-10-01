@@ -22,4 +22,14 @@ public class QuestionService {
     public List<Question> getQuestionsByCategory(Category category) throws NullPointerException{
         return questionRepository.findByCategory(category);
     }
+
+    public String saveQuestion(Question question) {
+        questionRepository.save(question);
+        return "success";
+    }
+
+    public String deleteQuestionById(int id) {
+        questionRepository.deleteById(id);
+        return "successfully deleted"+id;
+    }
 }
