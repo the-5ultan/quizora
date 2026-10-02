@@ -1,6 +1,7 @@
 package com.practice.quizora.controllers;
 
 import com.practice.quizora.enums.Category;
+import com.practice.quizora.models.Quiz;
 import com.practice.quizora.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,5 +19,10 @@ public class QuizController {
     @PostMapping(path="create")
     public ResponseEntity<String> createQuiz(@RequestParam Category category, @RequestParam int numQ, @RequestParam String title){
         return quizService.create(category, numQ, title);
+    }
+
+    @GetMapping(path="get/{id}")
+    public ResponseEntity<Quiz> getQuiz(@PathVariable int id){
+        return quizService.getQuizById(id);
     }
 }

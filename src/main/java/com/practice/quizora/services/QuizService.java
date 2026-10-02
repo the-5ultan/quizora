@@ -31,7 +31,18 @@ public class QuizService {
             return new  ResponseEntity<>("Quiz created successfully", HttpStatus.CREATED);
 
         }catch (Exception e){
+            e.printStackTrace();
             return new  ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public ResponseEntity<Quiz> getQuizById(int id) {
+        try {
+            return new ResponseEntity<>(quizRepository.getReferenceById(id),HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
     }
 }
