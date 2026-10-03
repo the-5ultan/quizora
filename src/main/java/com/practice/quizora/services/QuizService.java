@@ -2,6 +2,7 @@ package com.practice.quizora.services;
 
 import com.practice.quizora.enums.Category;
 import com.practice.quizora.models.Question;
+import com.practice.quizora.models.QuestionWrapper;
 import com.practice.quizora.models.Quiz;
 import com.practice.quizora.repositories.QuestionRepository;
 import com.practice.quizora.repositories.QuizRepository;
@@ -11,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class QuizService {
@@ -36,9 +39,15 @@ public class QuizService {
         }
     }
 
-    public ResponseEntity<Quiz> getQuizById(int id) {
+    public ResponseEntity<List<QuestionWrapper>> getQuizById(int id) {
         try {
-            return new ResponseEntity<>(quizRepository.getReferenceById(id),HttpStatus.OK);
+            Optional<Quiz> quiz = quizRepository.findById(id);
+            List<Question> questions = quiz.get().getQuestions();
+            List<QuestionWrapper> questionWrappers = new ArrayList<>();
+            for (Question question : questions) {
+                QuestionWrapper questionWrapper = new QuestionWrapper(question.getId(),question.getQuestionTitle(),question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4());
+            }
+            return new ResponseEntity<>(questionWrappers,HttpStatus.OK);
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

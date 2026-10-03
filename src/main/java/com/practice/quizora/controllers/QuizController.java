@@ -1,6 +1,7 @@
 package com.practice.quizora.controllers;
 
 import com.practice.quizora.enums.Category;
+import com.practice.quizora.models.QuestionWrapper;
 import com.practice.quizora.models.Quiz;
 import com.practice.quizora.services.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class QuizController {
     }
 
     @GetMapping(path="get/{id}")
-    public ResponseEntity<Quiz> getQuiz(@PathVariable int id){
+    public ResponseEntity<List<QuestionWrapper>> getQuiz(@PathVariable int id){
         return quizService.getQuizById(id);
     }
 }
