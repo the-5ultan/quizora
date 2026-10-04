@@ -14,6 +14,15 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
     List<Question> findByCategory(Category category);
     void deleteQuestionByQuestionTitle(String questionTitle);
-    @Query(value = "SELECT * FROM Questions q WHERE q.category=:category ORDER BY RAND() limit :numQ", nativeQuery = true)
-    List<Question> createQuizRandomly(@Param("category") Category category,@Param("numQ") int numQ);
+    @Query(
+            value = "SELECT * FROM questions " +
+                    "WHERE category = :category " +
+                    "ORDER BY RAND() " +
+                    "LIMIT :numQ",
+            nativeQuery = true
+    )
+    List<Question> createQuizRandomly(
+            @Param("category") String category,
+            @Param("numQ") int numQ
+    );
 }

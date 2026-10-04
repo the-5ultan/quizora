@@ -26,7 +26,7 @@ public class QuizService {
 
     public ResponseEntity<String> create(Category category, int NumQ, String title){
         try {
-            List<Question> questions = questionRepository.createQuizRandomly(category,NumQ);
+            List<Question> questions = questionRepository.createQuizRandomly(category.name(),NumQ);
             Quiz quiz = new Quiz();
             quiz.setTitle(title);
             quiz.setQuestions(questions);
