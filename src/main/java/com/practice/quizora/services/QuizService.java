@@ -46,8 +46,9 @@ public class QuizService {
             List<QuestionWrapper> questionWrappers = new ArrayList<>();
             for (Question question : questions) {
                 QuestionWrapper questionWrapper = new QuestionWrapper(question.getId(),question.getQuestionTitle(),question.getOption1(),question.getOption2(),question.getOption3(),question.getOption4());
+                questionWrappers.add(questionWrapper);
             }
-            return new ResponseEntity<>(questionWrappers,HttpStatus.OK);
+            return new ResponseEntity<>(questionWrappers,HttpStatus.ACCEPTED);
         }catch (Exception e){
             e.printStackTrace();
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
