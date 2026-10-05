@@ -4,6 +4,7 @@ import com.practice.quizora.enums.Category;
 import com.practice.quizora.models.Question;
 import com.practice.quizora.models.QuestionWrapper;
 import com.practice.quizora.models.Quiz;
+import com.practice.quizora.models.Response;
 import com.practice.quizora.repositories.QuestionRepository;
 import com.practice.quizora.repositories.QuizRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,5 +55,22 @@ public class QuizService {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    public ResponseEntity<String> calculateResult(int id, List<Response> responses) {
+        try {
+            Quiz quiz = quizRepository.findById(id).get();
+            List<Question> questions = quiz.getQuestions();
+            int score = 0;
+            for(int i = 0; i < responses.size(); i++){
+                if(questions.get(i).getRightOption().equals(responses.get(i).getAnswer())){
+                    score++;
+                }
+            }
+            return new ResponseEntity<>(score+"",HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new  ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
+        }
     }
 }

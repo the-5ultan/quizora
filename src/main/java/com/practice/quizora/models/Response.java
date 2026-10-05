@@ -3,11 +3,9 @@ package com.practice.quizora.models;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.management.ConstructorParameters;
-
 @Data
 @RequiredArgsConstructor
-public class Responce {
+public class Response {
     private Integer id;
     private String answer;
 }
