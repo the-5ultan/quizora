@@ -59,8 +59,8 @@ public class QuizService {
 
     public ResponseEntity<String> calculateResult(int id, List<Response> responses) {
         try {
-            Quiz quiz = quizRepository.findById(id).get();
-            List<Question> questions = quiz.getQuestions();
+            Optional<Quiz> quiz = quizRepository.findById(id);
+            List<Question> questions = quiz.get().getQuestions();
             int score = 0;
             for(int i = 0; i < responses.size(); i++){
                 if(questions.get(i).getRightOption().equals(responses.get(i).getAnswer())){
