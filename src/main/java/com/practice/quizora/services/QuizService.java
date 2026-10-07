@@ -73,4 +73,14 @@ public class QuizService {
             return new  ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
         }
     }
+
+    public ResponseEntity<String> removeQuiz(int id){
+        try {
+            quizRepository.deleteById(id);
+            return new ResponseEntity<>("Quiz removed successfully", HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>("Error", HttpStatus.BAD_REQUEST);
+        }
+    }
 }
