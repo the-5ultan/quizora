@@ -31,4 +31,9 @@ public class QuizController {
     public ResponseEntity<String> submitQuiz(@PathVariable int id, @RequestBody List<Response> responses){
         return quizService.calculateResult(id, responses);
     }
+
+    @GetMapping(path = "delete/{id}")
+    public ResponseEntity<String> deleteQuiz(@PathVariable int id){
+        return quizService.deleteQuiz(id);
+    }
 }
