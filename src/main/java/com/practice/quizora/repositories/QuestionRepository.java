@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
+    //We can convert the Category to String but this can 
     List<Question> findByCategory(Category category);
     void deleteQuestionByQuestionTitle(String questionTitle);
     @Query(

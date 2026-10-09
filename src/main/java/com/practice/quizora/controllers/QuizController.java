@@ -17,7 +17,7 @@ public class QuizController {
     @Autowired
     QuizService quizService;
 
-    @PostMapping(path="create")
+    @PostMapping(path="create")// The catagory down bellow can be changed to String this will also reduce some lines of code
     public ResponseEntity<String> createQuiz(@RequestParam Category category, @RequestParam int numQ, @RequestParam String title){
         return quizService.create(category, numQ, title);
     }
