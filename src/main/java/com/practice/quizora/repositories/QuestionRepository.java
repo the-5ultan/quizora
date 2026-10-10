@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, Integer> {
 
-    //We can convert the Category to String but this can 
+    //We can convert the Category to String but this can
     List<Question> findByCategory(Category category);
     void deleteQuestionByQuestionTitle(String questionTitle);
-    @Query(
+    @Query(//For the PostgreSQL the RAND() should be changed to RANDOM()
             value = "SELECT * FROM questions " +
                     "WHERE category = :category " +
                     "ORDER BY RAND() " +
